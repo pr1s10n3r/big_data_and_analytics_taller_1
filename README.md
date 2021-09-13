@@ -20,7 +20,7 @@ y se instaló utilizando el siguiente comando:
 $ sudo dnf install java-11-opendk-devel
 ```
 
-![Versión de Java](./imgs/java.jpeg)
+![Versión de Java](./imgs/java.png)
 
 ### Creación y Preparación de Usuario SSH
 
@@ -50,7 +50,7 @@ $ curl -O https://dlcdn.apache.org/hadoop/common/hadoop-3.3.1/hadoop-3.3.1.tar.g
 
 Luego se descomprimió utilizando el comando `tar xzf hadoop-3.3.1.tar.gz`.
 
-![Hadoop Descargado](hadoop_download.png)
+![Hadoop Descargado](./imgs/hadoop_download.png)
 
 ### Configuración de Hadoop
 
