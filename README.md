@@ -137,3 +137,54 @@ de Hadoop para el monitoreo de tareas, sistema de archivos, aplicaciones, etc.
 ![](./imgs/hadoop_all_apps.png)
 
 ## Parte 2
+
+Para esta parte del taller se ejecutó un programa de ejemplo (MapReduce) incluido
+en los archivos descargados de Hadoop. Para ejecutar este "job" es necesario seguir
+la siguiente secuencia de comandos:
+
+```sh
+$ hdfs dfs -mkdir /user
+$ hdfs dfs -mkdir /user/hdoop
+$ hdfs dfs -mkdir input
+$ hdfs dfs -put ./hadoop-3.3.1/etc/hadoop/*.xml input
+$ hadoop jar ./hadoop-3.3.1/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.3.1.jar grep input output 'dfs[a-z.]+'
+```
+
+Dado que el output de este programa es muy grande, no se puede adjuntar una captura completa,
+embargo sé que se ejecutó con éxito por su output al final:
+
+![](./imgs/hadoop_job_final.png)
+
+Además, se obtuvo el output del job desde el HDFS hacia el sistema de archivos local
+y se puede constatar su correcta ejecución leyendo los archivos de salida:
+
+![](./imgs/hadoop_job_output.png)
+
+**Respuesta 1:** El MapReduce ejecutado anteriormente lee todos los archivos cargados en el directorio
+input y sobre estos ejecuta la expresión regular `dfs[a-z.]+` la cuál buscará en todos estos archivos
+cadenas de texto que cumplan con dicha expresión. Y no solo esto, además agregará un número entero
+anterior a la cadena encontrada para indicar cuántas veces ha sido encontrada la cadena.
+
+Para el siguiente ejercicio, cargaré un archivo de texto y ejecutaré el MapReduce de _WordCount_. La secuencia
+de comandos es la misma que arriba, la única diferencia es cargar un archivo PDF en vez de archivos XML
+y ejecutar el programa _WordCount_ en vez de _Grep_. Los comandos fueron
+
+```sh
+$ hdfs dfs -put enwik8 input
+$ hadoop jar ./hadoop-3.3.1/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.3.1.jar wordcount input/enwik8 output/enwik8
+```
+
+![](./imgs/./imgs/hadoop_wc_running.png)
+
+Dado que el output de esta ejecución es muy larga, no se puede mostrar en una captura de pantalla completa, sin embargo
+una parte sería:
+
+![](./imgs/hadoop_wc_result.png)
+
+Como se puede apreciar, este MapReduce lo que hizo fue contar la cantidad de una misma palabra en el archivo
+de entrada que le suministré, agregando un número a la derecha de cuántas veces apareció la respectiva
+palabra en el archivo suministrado.
+
+## Parte 3
+
+
