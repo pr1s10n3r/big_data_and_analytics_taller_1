@@ -269,3 +269,30 @@ Tarea terminada:
 ![](./imgs/spark_finished.png)
 
 ## Parte 4
+
+En esta sección, descargaremos e instalaremos Anaconda en la misma máquina
+virtual donde he estado trabajando la sección anterior. Posteriormente,
+inicializaremos un entorno Jupyter y ejecutaremos los archivos provistos
+por el profesor en el enunciado del taller.
+
+### Descargar e Instalar Anaconda
+
+Primero, se debe descargar el instalador utilizando el siguiente comando:
+
+```sh
+$ curl -O https://repo.anaconda.com/archive/Anaconda3-2021.05-Linux-x86_64.sh
+```
+
+Luego, ejecutaremos el comando con `bash Anaconda3-2021.05-Linux-x86_64.sh`. El
+output de este instalador es muy largo pero en la siguiente captura se evidencia
+su instalanción correctamente:
+
+![](./imgs/anaconda_installed.png)
+
+### Inicializar Jupyter
+
+Una vez se instaló Anaconda, se inició una nueva instancia de Jupyter
+utilizando el comando `jupyter lab --ip=0.0.0.0`. Si se ingresa a la URL que
+me dió se puede observar el panel de Jupyter:
+
+![](./imgs/jupyter_panel.png)
