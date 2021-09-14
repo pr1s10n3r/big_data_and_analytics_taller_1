@@ -187,4 +187,85 @@ palabra en el archivo suministrado.
 
 ## Parte 3
 
+Esta sección instalará la herramienta Spark en una máquina
+virtual con Ubuntu Server 20.04.2 y ejecutaré el ejemplo
+de WordCount dentro del servidor Spark.
 
+
+### Preparación del Servidor
+
+Para iniciar, se instala el compilador del lenguaje de
+programación Scala y todas las dependencias necesarias.
+Además se instala el programa git para el versionamiento
+de archivos. Para instalarlo se hizo con el siguiente comando:
+
+```sh
+$ sudo apt install scala git
+```
+
+Para ver que tengo todo lo necesario para instalar y
+ejecutar Spark ejecutaré los siguientes comandos y
+todos deberían responder de manera satisfactoria.
+
+```sh
+$ java -version; javac -version; scala -version; git --version
+```
+
+![](imgs/ubuntu_scala_git.png)
+
+### Descarga e Instalación de Spark
+
+Con la ayuda de `curl` descargué la última versión disponible
+de Spark desde la página web oficial de proyecto.
+
+![](./imgs/ubuntu_spark_download.png)
+
+Luego, procedí a descomprimir el archivo descargado y mover
+el directorio resultante a `/opt/spark`. Además, preparé
+las variable de entorno necesarias para ejecutar Spark.
+
+![](./imgs/spark_envs.png)
+
+### Iniciar Maestro de Spark
+
+Con el comando `start-master.sh` he inicializado el servidor
+maestro de Spark. Si ingreso a `http://localhost:8080` podré
+visualizar el panel maestro de Spark.
+
+![](./imgs/spark_panel.png)
+
+### Iniciar Esclavo de Spark
+
+En este escenario, tanto maestro como esclavo fueron ejecutados
+en el mismo servidor. Para iniciar un esclavo bastó con ejecutar
+el comando `start-slave.sh spark://dankpad:7077`. Se puede ver
+que el esclavo levantó correctamente porque apareció en el panel
+maestro.
+
+![](./imgs/spark_slave.png)
+
+### Ingreso a Terminal de Spark
+
+Por último, para ingresar a la terminal de Spark, ingresé el comando `pyspark`.
+
+![](./imgs/spark_pyspark.png)
+
+### Ejecución de Word Count
+
+Para ejecutar el ejemplo `wordcount.py` descargué un archivo _lorem ipsum_
+y lo inserté al contexto de aplicación de Spark, a su vez indiqué cuál era
+mi servidor maestro y qué script debería correr. El comando completo sería:
+
+```sh
+$ pyspark --master spark://dankpad:7077 --name bigDataWC --py-files /opt/spark/examples/src/main/python/wordcount.py --files ./sample-text-file.txt
+```
+
+Se puede ver a la aplicación corriendo en el panel de Spark:
+
+![](./imgs/spark_running_wc.png)
+
+Tarea terminada:
+
+![](./imgs/spark_finished.png)
+
+## Parte 4
