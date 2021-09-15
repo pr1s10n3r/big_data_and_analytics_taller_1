@@ -296,3 +296,27 @@ utilizando el comando `jupyter lab --ip=0.0.0.0`. Si se ingresa a la URL que
 me dió se puede observar el panel de Jupyter:
 
 ![](./imgs/jupyter_panel.png)
+
+Si ejecutamos utilizando Jupyter los scripts proporcionados del repositorio dado
+en el enunciado, podemos evidenciar que el resultado del script `pyspark-data-analysis.ipynb`
+da como resultado los primeros 20 registros del archivo `stocks_price_final.csv`.
+Para llegar a este resultado el script tuvo que conectarse a nuestra instancia
+corriendo de Spark, asignar un _worker_, establecer un esquema de CSV, leer el archivo
+y luego mostrarlo.
+
+![](./imgs/pyspark-data-analysis_result.png)
+
+Luego, utilizando la librería `pyplot` graficó la información obtenida del archivo filtrando
+los registros cuya columna `symbol` fuese igual a `TSLA` o `GME`; comparando así el valor
+de sus acciones y mostrando en un gráfico su relación en un horizonte de precio sobre
+tiempo.
+
+![](./imgs/pyspark-data-analysis_result-graph.png)
+
+Para finalizar, agrupó los registros a través de los campos `symbol` y `sector` y los
+correlacionó a través de una función de agregación para obtener una gráfica de los
+sectores que más ingresos generan en acciones.
+
+![](/imgs/pyspark-data-analysis_result-graph-grouped.png)
+
+> **Nota:** Hubo que modificar la URI del servidor Spark para conseguir ejecutar el ejemplo.
